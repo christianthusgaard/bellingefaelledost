@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grundejerforeningen Bellinge Fælled Øst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #2d4a2d;
+      --green-mid: #4a7c59;
+      --green-light: #7dab8a;
+      --cream: #f5f0e8;
+      --warm-white: #fdfaf5;
+      --text: #1e2e1e;
+      --text-light: #5a6e5a;
+      --gold: #c8a84b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      background: var(--green-dark);
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 110%, #4a7c5922 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234a7c59' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .header-emblem {
+      width: 72px;
+      height: 72px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .header-emblem svg {
+      width: 38px;
+      height: 38px;
+      fill: var(--gold);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      max-width: 640px;
+      animation: fadeDown 0.9s 0.1s ease both;
+    }
+
+    header p.tagline {
+      color: var(--green-light);
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 14px;
+      animation: fadeDown 1s 0.2s ease both;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid #e0dbd0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 16px 24px;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--green-dark);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    p { color: var(--text-light); max-width: 640px; }
+
+    /* ── WELCOME ── */
+    #velkommen { border-bottom: 1px solid #e8e2d6; }
+
+    /* ── DOCUMENTS ── */
+    #dokumenter { background: var(--cream); max-width: 100%; }
+    #dokumenter > .inner { max-width: 860px; margin: 0 auto; padding: 72px 24px; }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .doc-card {
+      background: var(--warm-white);
+      border: 1px solid #ddd8cc;
+      border-radius: 10px;
+      padding: 24px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .doc-card:hover {
+      box-shadow: 0 6px 20px rgba(45,74,45,0.1);
+      transform: translateY(-2px);
+    }
+
+    .doc-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green-dark);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .doc-icon svg { width: 20px; height: 20px; fill: var(--cream); }
+
+    .doc-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    .doc-card p { font-size: 0.82rem; color: var(--text-light); margin: 0; }
+
+    /* ── BESTYRELSE ── */
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 28px;
+      margin-top: 36px;
+    }
+
+    .board-card {
+      text-align: center;
+    }
+
+    .board-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--warm-white);
+      font-weight: 600;
+      border: 3px solid var(--cream);
+      box-shadow: 0 4px 16px rgba(45,74,45,0.15);
+      overflow: hidden;
+    }
+
+    .board-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .board-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+
+    .board-role {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .board-contact {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      text-decoration: none;
+      display: block;
+    }
+
+    .board-contact:hover { color: var(--green-mid); }
+
+    /* ── CONTACT ── */
+    #kontakt { background: var(--green-dark); max-width: 100%; }
+    #kontakt .inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    #kontakt .section-label { color: var(--green-light); }
+    #kontakt h2 { color: var(--cream); }
+    #kontakt .divider { background: var(--gold); }
+    #kontakt p { color: #a8c4a8; }
+
+    .contact-info { flex: 1; min-width: 240px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      color: #c0d8c0;
+      font-size: 0.95rem;
+    }
+
+    .contact-item svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
+    .contact-item a { color: #c0d8c0; text-decoration: none; }
+    .contact-item a:hover { color: var(--cream); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a2e1a;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: #5a7a5a;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      nav a { padding: 14px 14px; font-size: 0.78rem; letter-spacing: 0.04em; }
+      .board-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-emblem">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C7 2 3 6.5 3 10c0 5 9 12 9 12s9-7 9-12c0-3.5-4-8-9-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/>
+    </svg>
+  </div>
+  <h1>Grundejerforeningen<br>Bellinge Fælled Øst</h1>
+  <p class="tagline">Fællesskab &middot; Ansvar &middot; Nabolag</p>
+  <div class="wave">
+    <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
+    </svg>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#velkommen">Velkommen</a>
+  <a href="#dokumenter">Dokumenter</a>
+  <a href="#bestyrelse">Bestyrelse</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- VELKOMMEN -->
+<section id="velkommen">
+  <div class="fade-in">
+    <p class="section-label">Om foreningen</p>
+    <h2>Velkommen til vores grundejerforening</h2>
+    <div class="divider"></div>
+    <p>
+      Velkommen til Grundejerforeningen Bellinge Fælled Øst. Vi er en lokal forening, der varetager fælles interesser for beboerne i vores område. Foreningens formål er at sikre et godt og trygt nabolag, vedligeholde fællesarealer og styrke fællesskabet blandt grundejerne.
+    </p>
+    <p style="margin-top: 16px;">
+      På denne side finder du vigtige dokumenter, information om bestyrelsen samt kontaktoplysninger. Har du spørgsmål eller ønsker at komme i kontakt med bestyrelsen, er du altid velkommen til at skrive til os.
+    </p>
+  </div>
+</section>
+
+<!-- DOKUMENTER -->
+<div id="dokumenter">
+  <div class="inner">
+    <div class="fade-in">
+      <p class="section-label">Downloads</p>
+      <h2>Dokumenter &amp; vedtægter</h2>
+      <div class="divider"></div>
+      <p>Her finder du foreningens vigtigste dokumenter. Klik på et dokument for at åbne eller downloade det.</p>
+
+      <div class="doc-grid">
+        <a href="#" class="doc-card">
+          <div class="doc-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
+          </div>
+          <div>
+            <h3>Vedtægter</h3>
+            <p>Foreningens gældende vedtægter</p>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card">
+          <div class="doc-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
+          </div>
+          <div>
+            <h3>Referater</h3>
+            <p>Referater fra generalforsamlinger</p>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card">
+          <div class="doc-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
+          </div>
+          <div>
+            <h3>Husorden</h3>
+            <p>Regler og retningslinjer</p>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card">
+          <div class="doc-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
+          </div>
+          <div>
+            <h3>Budget &amp; regnskab</h3>
+            <p>Seneste godkendte regnskab</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BESTYRELSE -->
+<section id="bestyrelse">
+  <div class="fade-in">
+    <p class="section-label">Bestyrelsen</p>
+    <h2>Mød bestyrelsen</h2>
+    <div class="divider"></div>
+    <p>Foreningens bestyrelse er valgt på den ordinære generalforsamling og varetager foreningens daglige drift.</p>
+
+    <div class="board-grid">
+
+      <!-- Erstat navn, rolle, initialer og email for hvert bestyrelsesmedlem -->
+      <!-- Tip: Skift data-initials til de rigtige initialer, og indsæt et <img src="..."> inde i .board-avatar hvis du har et billede -->
+
+      <div class="board-card fade-in">
+        <div class="board-avatar" data-initials="FN">FN</div>
+        <h3>Fornavn Efternavn</h3>
+        <div class="board-role">Formand</div>
+        <a href="mailto:formand@bellingefaelledoest.dk" class="board-contact">formand@bellingefaelledoest.dk</a>
+      </div>
+
+      <div class="board-card fade-in">
+        <div class="board-avatar" data-initials="FN">FN</div>
+        <h3>Fornavn Efternavn</h3>
+        <div class="board-role">Næstformand</div>
+        <a href="mailto:kontakt@bellingefaelledoest.dk" class="board-contact">kontakt@bellingefaelledoest.dk</a>
+      </div>
+
+      <div class="board-card fade-in">
+        <div class="board-avatar" data-initials="FN">FN</div>
+        <h3>Fornavn Efternavn</h3>
+        <div class="board-role">Kasserer</div>
+        <a href="mailto:kontakt@bellingefaelledoest.dk" class="board-contact">kontakt@bellingefaelledoest.dk</a>
+      </div>
+
+      <div class="board-card fade-in">
+        <div class="board-avatar" data-initials="FN">FN</div>
+        <h3>Fornavn Efternavn</h3>
+        <div class="board-role">Bestyrelsesmedlem</div>
+        <a href="mailto:kontakt@bellingefaelledoest.dk" class="board-contact">kontakt@bellingefaelledoest.dk</a>
+      </div>
+
+      <div class="board-card fade-in">
+        <div class="board-avatar" data-initials="FN">FN</div>
+        <h3>Fornavn Efternavn</h3>
+        <div class="board-role">Bestyrelsesmedlem</div>
+        <a href="mailto:kontakt@bellingefaelledoest.dk" class="board-contact">kontakt@bellingefaelledoest.dk</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<div id="kontakt">
+  <div class="inner">
+    <div class="contact-info fade-in">
+      <p class="section-label">Skriv til os</p>
+      <h2>Kontakt</h2>
+      <div class="divider"></div>
+      <p>Har du spørgsmål, henvendelser eller ønsker du at komme i kontakt med bestyrelsen, er du altid velkommen til at skrive til os.</p>
+
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:kontakt@bellingefaelledoest.dk">kontakt@bellingefaelledoest.dk</a>
+      </div>
+
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        <span>Bellinge, Odense</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Grundejerforeningen Bellinge Fælled Øst &mdash; Alle rettigheder forbeholdes
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
