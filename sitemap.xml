@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Forsiden -->
+  <url>
+    <loc>https://christianthusgaard.github.io/bellingefaelledost/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Foreningen landingsside -->
+  <url>
+    <loc>https://christianthusgaard.github.io/bellingefaelledost/foreningen</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Grundejer forpligtelser landingsside -->
+  <url>
+    <loc>https://christianthusgaard.github.io/bellingefaelledost/grundejer</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Området Bellinge landingsside -->
+  <url>
+    <loc>https://christianthusgaard.github.io/bellingefaelledost/bellinge</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
