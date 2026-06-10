@@ -37,17 +37,17 @@
 
     /* ── HEADER ── */
     header {
-  position: relative;
-  background: var(--green-dark);
-  overflow: hidden;
-  min-height: 140px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px 24px 50px 24px;
-}
+      position: relative;
+      background: var(--green-dark);
+      overflow: hidden;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 24px 50px 24px;
+    }
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.3rem, 3vw, 1.8rem);
@@ -95,6 +95,19 @@
     a.text-link { color: var(--green-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     a.text-link:hover { color: var(--green-dark); text-decoration: underline; }
     hr { border: 0; height: 1px; background: #e8e2d6; margin: 40px 0; }
+    
+    /* ── IMAGES ── */
+    .content-image {
+      max-width: 720px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 24px 0;
+      border: 1px solid #e0dbd0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(45, 74, 45, 0.05);
+    }
+
     footer { background: #1a2e1a; text-align: center; padding: 24px; font-size: 0.8rem; color: #5a7a5a; margin-top: 60px; }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 600px) { nav a { padding: 14px 12px; font-size: 0.78rem; } }
@@ -127,7 +140,7 @@
   <p class="section-label">Om foreningen</p>
   <h2>Fællesskab &amp; Stamdata</h2>
   <div class="divider"></div>
-  
+   
   <p>
     Velkommen til den officielle side for Grundejerforeningen Bellinge Fælled Øst. Foreningen varetager driften af fællesfaciliteter og de grønne rammer i den østlige etape af den bæredygtige udstykning på Bellinge Fælled (Odense SV). Foreningens område er færdigudstykket, og der er ikke længere ledige byggegrunde til salg.
   </p>
@@ -145,15 +158,18 @@
   <p>Der er lovpligtig medlemspligt for alle grundejere i østafdelingen.</p>
   <ul>
     <li><strong>Kontingent (2026):</strong> 1.500 kr. årligt (sat ned fra 2.000 kr.). Kontingentet opkræves som en engangsbetaling i maj.</li>
-    <li><strong>Gebyrer og gæld:</strong> Der betales ikke indskud, og der er intet gebyr eller krav om sikkerhedsstillelse i forbindelse med en ejendomsoverdragelse. Foreningen har ingen fællesgæld.</li>
+    <li><strong>Gebyrer og gæld:</strong> Der betales ikke indskud, og der er intet gebyr eller krav om sikkerhedsstillelse i forbindelse med en ejendomsoverdragelse. Foreningen har aucune fællesgæld.</li>
     <li><strong>Antenneforhold:</strong> Foreningen administrerer ikke antenneforhold eller kabel-tv.</li>
     <li><strong>Kontakt ved restance:</strong> Spørgsmål vedrørende manglende betaling rettes til: <a href="mailto:bestyrelsen5250@outlook.dk" class="text-link">bestyrelsen5250@outlook.dk</a>.</li>
   </ul>
 
+  <!-- Billede 1: Indsat efter bestyrelsesmailen under stamdata-afsnittet -->
+  <img src="kortomraadet.png" alt="Kort over foreningens område - Bellinge Fælled Øst" class="content-image" />
+
   <hr />
 
   <h2>Bestyrelsen, Vedtægter &amp; Referater</h2>
-  
+   
   <h3>Bestyrelsen</h3>
   <p>Bestyrelsen vælges på den årlige generalforsamling og varetager foreningens daglige interesser, økonomi og eksterne samarbejder med blandt andet Odense Kommune.</p>
 
@@ -174,9 +190,12 @@
 
   <h2>Lokalplan &amp; Geografisk Afgrænsning</h2>
   <ul>
-    <li><strong>Lokalplan:</strong> Området er underlagt og reguleret av <strong>Lokalplan nr. 6-1034</strong> (Bellinge Fælled, etape 4) for Odense Kommune. <a href="https://odense.viewer.dkplan.niras.dk/plan/24#/lokalplanid/1092" target="_blank" class="text-link">Se digitale kort her</a> eller <a href="https://dokument.plandata.dk/20_9430969_1668166619146.pdf" target="_blank" class="text-link">download den officielle PDF her</a>.</li>
+    <li><strong>Lokalplan:</strong> Området er underlagt og reguleret af <strong>Lokalplan nr. 6-1034</strong> (Bellinge Fælled, etape 4) for Odense Kommune. <a href="https://odense.viewer.dkplan.niras.dk/plan/24#/lokalplanid/1092" target="_blank" class="text-link">Se digitale kort her</a> eller <a href="https://dokument.plandata.dk/20_9430969_1668166619146.pdf" target="_blank" class="text-link">download den officielle PDF her</a>.</li>
     <li><strong>Afgrænsning:</strong> Foreningen dækker udelukkende den østlige udstykning øst for Flintagergårdvej (primært vejene Hjortetakken og Trykstokken). Området afgrænses af Assensvej mod syd og Lettebækken mod nord, og er helt adskilt fra den vestlige grundejerforening (etape 1-3).</li>
   </ul>
+
+  <!-- Billede 2: Indsat direkte under afsnittet med Lokalplan -->
+  <img src="korthusnumre.png" alt="Oversigtskort med husnumre for lokalplanområdet" class="content-image" />
 
   <hr />
 
