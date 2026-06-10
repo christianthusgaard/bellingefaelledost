@@ -26,21 +26,31 @@
       font-size: 17px;
       line-height: 1.7;
     }
+
+    /* ── STICKY TOP ELEMENT ── */
+    .top-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(45, 74, 45, 0.15);
+    }
+
+    /* ── HEADER ── */
     header {
       position: relative;
       background: var(--green-dark);
       overflow: hidden;
-      min-height: 250px;
+      min-height: 120px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 24px 60px;
+      padding: 20px 24px;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
       font-weight: 700;
       color: var(--cream);
       letter-spacing: 0.02em;
@@ -49,12 +59,11 @@
       animation: fadeDown 0.8s ease both;
     }
     .wave { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+
+    /* ── NAV ── */
     nav {
       background: var(--warm-white);
       border-bottom: 1px solid #e0dbd0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -66,11 +75,13 @@
       text-transform: uppercase;
       color: var(--text-light);
       text-decoration: none;
-      padding: 16px 24px;
+      padding: 14px 24px;
       border-bottom: 3px solid transparent;
       transition: color 0.2s, border-color 0.2s;
     }
     nav a:hover, nav a.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+
+    /* ── CONTENT SECTIONS ── */
     section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
     .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
     h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--green-dark); margin: 32px 0 16px; line-height: 1.25; }
@@ -91,22 +102,26 @@
 </head>
 <body>
 
-<header>
-  <h1>Grundejerforeningen Bellinge Fælled Øst</h1>
-  <div class="wave">
-    <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
-    </svg>
-  </div>
-</header>
+<div class="top-container">
 
-<nav>
-  <a href="/bellingefaelledost/">Forside</a>
-  <a href="/bellingefaelledost/foreningen" class="active">Foreningen</a>
-  <a href="/bellingefaelledost/grundejer">Grundejers Forpligtelser</a>
-  <a href="/bellingefaelledost/bellinge">Området</a>
-  <a href="/bellingefaelledost/#kontakt">Kontakt</a>
-</nav>
+  <header>
+    <h1>Grundejerforeningen Bellinge Fælled Øst</h1>
+    <div class="wave">
+      <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
+      </svg>
+    </div>
+  </header>
+
+  <nav>
+    <a href="/bellingefaelledost/">Forside</a>
+    <a href="/bellingefaelledost/foreningen" class="active">Foreningen</a>
+    <a href="/bellingefaelledost/grundejer">Grundejers Forpligtelser</a>
+    <a href="/bellingefaelledost/bellinge">Området</a>
+    <a href="/bellingefaelledost/#kontakt">Contact</a>
+  </nav>
+
+</div>
 
 <section>
   <p class="section-label">Om foreningen</p>
@@ -130,7 +145,7 @@
   <p>Der er lovpligtig medlemspligt for alle grundejere i østafdelingen.</p>
   <ul>
     <li><strong>Kontingent (2026):</strong> 1.500 kr. årligt (sat ned fra 2.000 kr.). Kontingentet opkræves som en engangsbetaling i maj.</li>
-    <li><strong>Gebyrer og gæld:</strong> Der betales ikke indskud, og der er intet gebyr eller krav om sikkerhedsstillelse i forbindelse med en ejendomsoverdragelse. Foreningen har aucune fællesgæld.</li>
+    <li><strong>Gebyrer og gæld:</strong> Der betales ikke indskud, og der er intet gebyr eller krav om sikkerhedsstillelse i forbindelse med en ejendomsoverdragelse. Foreningen har ingen fællesgæld.</li>
     <li><strong>Antenneforhold:</strong> Foreningen administrerer ikke antenneforhold eller kabel-tv.</li>
     <li><strong>Kontakt ved restance:</strong> Spørgsmål vedrørende manglende betaling rettes til: <a href="mailto:bestyrelsen5250@outlook.dk" class="text-link">bestyrelsen5250@outlook.dk</a>.</li>
   </ul>
@@ -159,7 +174,7 @@
 
   <h2>Lokalplan &amp; Geografisk Afgrænsning</h2>
   <ul>
-    <li><strong>Lokalplan:</strong> Området er underlagt og reguleret af <strong>Lokalplan nr. 6-1034</strong> (Bellinge Fælled, etape 4) for Odense Kommune. <a href="https://odense.viewer.dkplan.niras.dk/plan/24#/lokalplanid/1092" target="_blank" class="text-link">Se digitale kort her</a> eller <a href="https://dokument.plandata.dk/20_9430969_1668166619146.pdf" target="_blank" class="text-link">download den officielle PDF her</a>.</li>
+    <li><strong>Lokalplan:</strong> Området er underlagt og reguleret av <strong>Lokalplan nr. 6-1034</strong> (Bellinge Fælled, etape 4) for Odense Kommune. <a href="https://odense.viewer.dkplan.niras.dk/plan/24#/lokalplanid/1092" target="_blank" class="text-link">Se digitale kort her</a> eller <a href="https://dokument.plandata.dk/20_9430969_1668166619146.pdf" target="_blank" class="text-link">download den officielle PDF her</a>.</li>
     <li><strong>Afgrænsning:</strong> Foreningen dækker udelukkende den østlige udstykning øst for Flintagergårdvej (primært vejene Hjortetakken og Trykstokken). Området afgrænses af Assensvej mod syd og Lettebækken mod nord, og er helt adskilt fra den vestlige grundejerforening (etape 1-3).</li>
   </ul>
 
