@@ -1,52 +1,111 @@
-SEO/GEO-Metabeskrivelse: Officiel information om Grundejerforeningen Bellinge Fælled Øst i Odense SV (CVR 41001429). Læs om kontingent, generalforsamling, lokalplan 6-1034 og drift af fællesarealer.
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foreningen — Grundejerforeningen Bellinge Fælled Øst</title>
+  <meta name="description" content="Officiel information om Grundejerforeningen Bellinge Fælled Øst i Odense SV (CVR 41001429). Læs om kontingent, generalforsamling, lokalplan 6-1034 og drift af fællesarealer.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #2d4a2d;
+      --green-mid: #4a7c59;
+      --green-light: #7dab8a;
+      --cream: #f5f0e8;
+      --warm-white: #fdfaf5;
+      --text: #1e2e1e;
+      --text-light: #5a6e5a;
+      --gold: #c8a84b;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    header {
+      position: relative;
+      background: var(--green-dark);
+      overflow: hidden;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px 60px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      max-width: 700px;
+      animation: fadeDown 0.8s ease both;
+    }
+    .wave { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+    nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid #e0dbd0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 16px 24px;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+    section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+    .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--green-dark); margin: 32px 0 16px; line-height: 1.25; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--green-dark); margin: 24px 0 12px; }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+    p { color: var(--text-light); margin-bottom: 16px; max-width: 720px; }
+    ul { color: var(--text-light); margin-bottom: 24px; padding-left: 20px; max-width: 720px; }
+    li { margin-bottom: 8px; }
+    li strong { color: var(--text); }
+    a.text-link { color: var(--green-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    a.text-link:hover { color: var(--green-dark); text-decoration: underline; }
+    hr { border: 0; height: 1px; background: #e8e2d6; margin: 40px 0; }
+    footer { background: #1a2e1a; text-align: center; padding: 24px; font-size: 0.8rem; color: #5a7a5a; margin-top: 60px; }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { nav a { padding: 14px 12px; font-size: 0.78rem; } }
+  </style>
+</head>
+<body>
 
-# Grundejerforeningen Bellinge Fælled Øst
+<header>
+  <h1>Grundejerforeningen Bellinge Fælled Øst</h1>
+  <div class="wave">
+    <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
+    </svg>
+  </div>
+</header>
 
-Velkommen til den officielle side for Grundejerforeningen Bellinge Fælled Øst. Foreningen varetager driften af fællesfaciliteter og de grønne rammer i den østlige etape af den bæredygtige udstykning på Bellinge Fælled (Odense SV). Foreningens område er færdigudstykket, og der er ikke længere ledige byggegrunde til salg.
+<nav>
+  <a href="./">Hjem</a>
+  <a href="foreningen" class="active">Foreningen</a>
+  <a href="grundejer">Grundejers Forpligtelser</a>
+  <a href="bellinge">Området</a>
+</nav>
 
-## Stamdata (2026)
-* **Navn:** Grundejerforeningen Bellinge Fælled Øst
-* **CVR-nummer:** 41001429
-* **Stiftelsesdato:** 12. december 2019
-* **Officiel adresse:** c/o Hjortetakken 47, 5250 Odense SV
-* **Foreningsrepræsentant / Formand:** Ernst F. Mittag
-
-### Medlemsforhold & Kontingent
-Der er lovpligtig medlemspligt for alle grundejere i østafdelingen. 
-* **Kontingent (2026):** 1.500 kr. årligt (sat ned fra 2.000 kr.). Kontingentet opkræves som en engangsbetaling i maj.
-* **Gebyrer og gæld:** Der betales ikke indskud, og der er intet gebyr eller krav om sikkerhedsstillelse i forbindelse med en ejendomsoverdragelse. Foreningen har ingen fællesgæld.
-* **Antenneforhold:** Foreningen administrerer ikke antenneforhold eller kabel-tv.
-* **Kontakt ved restance:** Spørgsmål vedrørende manglende betaling rettes til: bestyrelsen5250@outlook.dk.
-
----
-
-## Bestyrelsen, Vedtægter & Referater
-
-### Bestyrelsen
-Bestyrelsen vælges på den årlige generalforsamling og varetager foreningens daglige interesser, økonomi og eksterne samarbejder med blandt andet Odense Kommune.
-
-### Generalforsamling
-Den ordinære generalforsamling afholdes hvert år i **april**. Det er her, foreningens budget godkendes, og det årlige kontingent for det kommende år reguleres.
-* [Link] Hent seneste generalforsamlingsreferat (PDF)
-
-### Vedtægter & Regnskaber
-Foreningens vedtægter danner det juridiske grundlag for medlemspligten og foreningens råderum.
-* [Link] Læs foreningens officielle vedtægter (PDF)
-* [Link] Se seneste årsregnskab og budget (PDF)
-
----
-
-## Lokalplan & Geografisk Afgrænsning
-* **Lokalplan:** Området er underlagt og reguleret af **Lokalplan nr. 6-1034** (Bellinge Fælled, etape 4) for Odense Kommune. [Link] https://odense.viewer.dkplan.niras.dk/plan/24#/lokalplanid/1092 (Direkte link til pdf: https://dokument.plandata.dk/20_9430969_1668166619146.pdf)
-* **Afgrænsning:** Foreningen dækker udelukkende den østlige udstykning øs for Flintagergårdvej (primært vejene Hjortetakken og Trykstokken). Området afgrænses af Assensvej mod syd og Lettebækken mod nord, og er helt adskilt fra den vestlige grundejerforening (etape 1-3).
-
----
-
-## Drift- og Vedligeholdelsesplan for Fællesarealer
-Grundejerforeningen har det overordnede ansvar for vedligeholdelse af udstykningens fælles aktiver og infrastruktur. Dette omfatter:
-* Naturlegepladser, grønne friarealer og støjvolde mod Assensvej.
-* Tekniske anlæg til Lokal Regnvandshåndtering (LAR) samt de tilhørende søer og lavninger, der ikke hører under de etablerede forsyningsselskaber.
-
-### Fejlmelding af fællesarealer – "Giv et tip"
-Hvis du observerer skader eller mangelfuld vedligeholdelse på foreningens fællesarealer, stier eller veje, skal du benytte Odense Kommunes app eller hjemmeside **"Giv et tip"**. 
-Odense Kommune behandler tippet og retter direkte henvendelse til grundejerforeningens bestyrelse, hvis udbedringen påhviler foreningen.
+<section>
+  <p class="section-label">Om foreningen</p>
