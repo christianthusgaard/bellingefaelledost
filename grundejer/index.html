@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Foreningen — Grundejerforeningen Bellinge Fælled Øst</title>
-  <meta name="description" content="Officiel information om Grundejerforeningen Bellinge Fælled Øst i Odense SV (CVR 41001429). Læs om kontingent, generalforsamling, lokalplan 6-1034 og drift af fællesarealer.">
+  <title>Grundejerens Forpligtelser — Grundejerforeningen Bellinge Fælled Øst</title>
+  <meta name="description" content="Regler for snerydning, hækklipning og parkering i Bellinge Fælled Øst. Se dine forpligtelser som grundejer på private fællesveje i Odense Kommune efter Vejloven § 68.">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,35 +26,43 @@
       font-size: 17px;
       line-height: 1.7;
     }
+
+    /* ── STICKY TOP ELEMENT ── */
+    .top-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(45, 74, 45, 0.15);
+    }
+
+    /* ── HEADER ── */
     header {
       position: relative;
       background: var(--green-dark);
       overflow: hidden;
-      min-height: 250px;
+      min-height: 120px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 24px 60px;
+      padding: 20px 24px;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
       font-weight: 700;
       color: var(--cream);
       letter-spacing: 0.02em;
       line-height: 1.2;
       max-width: 700px;
-      animation: fadeDown 0.8s ease both;
     }
     .wave { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+
+    /* ── NAV ── */
     nav {
       background: var(--warm-white);
       border-bottom: 1px solid #e0dbd0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -66,11 +74,13 @@
       text-transform: uppercase;
       color: var(--text-light);
       text-decoration: none;
-      padding: 16px 24px;
+      padding: 14px 24px;
       border-bottom: 3px solid transparent;
       transition: color 0.2s, border-color 0.2s;
     }
     nav a:hover, nav a.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+
+    /* ── CONTENT SECTIONS ── */
     section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
     .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
     h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--green-dark); margin: 32px 0 16px; line-height: 1.25; }
@@ -85,96 +95,113 @@
     a.text-link:hover { color: var(--green-dark); text-decoration: underline; }
     hr { border: 0; height: 1px; background: #e8e2d6; margin: 40px 0; }
     footer { background: #1a2e1a; text-align: center; padding: 24px; font-size: 0.8rem; color: #5a7a5a; margin-top: 60px; }
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 600px) { nav a { padding: 14px 12px; font-size: 0.78rem; } }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Grundejerforeningen Bellinge Fælled Øst</h1>
-  <div class="wave">
-    <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
-    </svg>
-  </div>
-</header>
+<div class="top-container">
 
-<!-- NAV -->
-<nav>
-  <a href="/bellingefaelledost/">Forside</a>
-  <a href="/bellingefaelledost/foreningen" class="active">Foreningen</a>
-  <a href="/bellingefaelledost/grundejer">Grundejers Forpligtelser</a>
-  <a href="/bellingefaelledost/bellinge">Området</a>
-  <a href="/bellingefaelledost/#kontakt">Kontakt</a>
-</nav>
+  <header>
+    <h1>Grundejerens Forpligtelser</h1>
+    <div class="wave">
+      <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
+      </svg>
+    </div>
+  </header>
+
+  <nav>
+    <a href="/bellingefaelledost/">Forside</a>
+    <a href="/bellingefaelledost/foreningen">Foreningen</a>
+    <a href="/bellingefaelledost/grundejer" class="active">Grundejers Forpligtelser</a>
+    <a href="/bellingefaelledost/bellinge">Området</a>
+    <a href="/bellingefaelledost/#kontakt">Kontakt</a>
+  </nav>
+
+</div>
 
 <section>
-  <p class="section-label">Om foreningen</p>
-  <h2>Fællesskab &amp; Stamdata</h2>
+  <p class="section-label">Lovgivning &amp; Vedligehold</p>
+  <h2>Dit ansvar i nabolaget</h2>
   <div class="divider"></div>
   
   <p>
-    Velkommen til den officielle side for Grundejerforeningen Bellinge Fælled Øst. Foreningen varetager driften af fællesfaciliteter og de grønne rammer i den østlige etape af den bæredygtige udstykning på Bellinge Fælled (Odense SV). Foreningens område er færdigudstykket, og der er ikke længere ledige byggegrunde til salg.
+    Som herre i eget hus følger der også et ansvar med for de fælles rammer. Da vejene i Bellinge Fælled Øst er <strong>private fællesveje i byzone</strong>, har du som grundejer pligt til at renholde, beskære og glatførebekæmpe arealerne ud for din egen grund.
   </p>
 
-  <h3>Stamdata (2026)</h3>
+  <h3>Lovgrundlag: Vejlovens &sect; 68</h3>
+  <p>I henhold til Lov om offentlige veje &sect; 68 omfatter grundejerens renholdelsespligt:</p>
   <ul>
-    <li><strong>Navn:</strong> Grundejerforeningen Bellinge Fælled Øst</li>
-    <li><strong>CVR-nummer:</strong> 41001429</li>
-    <li><strong>Stiftelsesdato:</strong> 12. december 2019</li>
-    <li><strong>Officiel adresse:</strong> c/o Hjortetakken 47, 5250 Odense SV</li>
-    <li><strong>Foreningsrepræsentant / Formand:</strong> Ernst F. Mittag</li>
-  </ul>
-
-  <h3>Medlemsforhold &amp; Kontingent</h3>
-  <p>Der er lovpligtig medlemspligt for alle grundejere i østafdelingen.</p>
-  <ul>
-    <li><strong>Kontingent (2026):</strong> 1.500 kr. årligt (sat ned fra 2.000 kr.). Kontingentet opkræves som en engangsbetaling i maj.</li>
-    <li><strong>Gebyrer og gæld:</strong> Der betales ikke indskud, og der er intet gebyr eller krav om sikkerhedsstillelse i forbindelse med en ejendomsoverdragelse. Foreningen har ingen fællesgæld.</li>
-    <li><strong>Antenneforhold:</strong> Foreningen administrerer ikke antenneforhold eller kabel-tv.</li>
-    <li><strong>Kontakt ved restance:</strong> Spørgsmål vedrørende manglende betaling rettes til: <a href="mailto:bestyrelsen5250@outlook.dk" class="text-link">bestyrelsen5250@outlook.dk</a>.</li>
+    <li>Fjernelse af ukrudt og affald på fortov og stier.</li>
+    <li>Renholdelse af asfalterede og flisebelagte færdselsarealer ud for grunden.</li>
+    <li>Renholdelse af rendestene, nedløbsriste og rørgennemløb i fortov og sti for at sikre vandets frie løb.</li>
   </ul>
 
   <hr />
 
-  <h2>Bestyrelsen, Vedtægter &amp; Referater</h2>
+  <h2>Renholdelse, Beskæring &amp; Snerydning</h2>
   
-  <h3>Bestyrelsen</h3>
-  <p>Bestyrelsen vælges på den årlige generalforsamling og varetager foreningens daglige interesser, økonomi og eksterne samarbejder med blandt andet Odense Kommune.</p>
-
-  <h3>Generalforsamling</h3>
-  <p>Den ordinære generalforsamling afholdes hvert år i <strong>april</strong>. Det er her, foreningens budget godkendes, og det årlige kontingent for det kommende år reguleres.</p>
+  <h3>1. Hække, buske og træer (Klipning)</h3>
+  <p>Beplantning må ikke være til gene for trafikanter, kørestolsbrugere eller barnevogne.</p>
   <ul>
-    <li><a href="#" class="text-link">Hent seneste generalforsamlingsreferat (PDF)</a></li>
+    <li><strong>Placering:</strong> Nye hække bør altid plantes således, at de ikke vokser ud over skel.</li>
+    <li><strong>Synlighed:</strong> Vejbelysning, vejskilte, brandhaner og postkasser skal holdes fri for grene og altid være synlige.</li>
+    <li><strong>Frihøjde:</strong> Træer og buske skal beskæres efter følgende mål:
+      <br />&bull; Minimum <strong>2,8 meter</strong> frihøjde over fortove, cykelstier og rabatter.
+      <br />&bull; Minimum <strong>4,2 meter</strong> frihøjde over kørebaner.
+    </li>
   </ul>
 
-  <h3>Vedtægter &amp; Regnskaber</h3>
-  <p>Foreningens vedtægter danner det juridiske grundlag for medlemspligten og foreningens råderum.</p>
+  <h3>2. Efterårsblade &amp; Rendestene</h3>
+  <p>Når bladene falder, skal du rydde dit fortov. Sving også gerne kosten i rendestenen ud for din grund og løsn snavs på brøndristene. Det sikrer, at regnvandet kan løbe uhindret væk og ikke skaber lokale oversvømmelser.</p>
+
+  <h3>3. Snerydning og Glatførebekæmpelse (Vinter)</h3>
+  <p>Når sneen falder, har du pligt til at rydde og gruse/salte fortov, sti og kørebane ud for din ejendom.</p>
   <ul>
-    <li><a href="https://1drv.ms/f/c/e377349d40baa6d4/IgBOawtRm9IYTqSrSb5JKkZlAT0uJPKxWjdwz5Q3ISyacyg?e=TWkYVj" target="_blank" class="text-link">Læs foreningens officielle vedtægter (PDF)</a></li>
-    <li><a href="#" class="text-link">Se seneste årsregnskab og budget (PDF)</a></li>
+    <li><strong>Tidsrum:</strong> Snekastning og saltning skal være udført i tidsrummet <strong>kl. 07.00 – 22.00</strong>.</li>
+    <li><strong>Adgangskrav:</strong> Du skal sikre sikker adgang til postkassen samt til affaldsbeholderen og pladsen omkring den.</li>
+    <li><strong>Konsekvens:</strong> Hvis der ikke er ryddet, kan postbuddet og renovationsmedarbejderne nægte to udbringe post eller tømme dit affald. Der henvises til <em>Vinterregulativet for Odense Kommune</em>.</li>
   </ul>
+
+  <h3>4. Kommunens Tilsyn</h3>
+  <p>Odense Kommune fører tilsyn med, at reglerne overholdes. Hvis en grundejer ignorerer påbud om renholdelse eller hækklipning, kan kommunen lade arbejdet udføre af en ekstern entreprenør for grundejerens regning.</p>
+  <p><a href="https://www.odense.dk/grundejer" target="_blank" class="text-link">Læs mere om Odense Kommunes regler for grundejere her</a></p>
 
   <hr />
 
-  <h2>Lokalplan &amp; Geografisk Afgrænsning</h2>
+  <h2>Regler for Standsning og Parkering</h2>
+  <p>Odense Kommunes parkeringsregulativ og Færdselsloven er gældende på alle veje i området:</p>
+
+  <h3>Særlige køretøjer</h3>
   <ul>
-    <li><strong>Lokalplan:</strong> Området er underlagt og reguleret af <strong>Lokalplan nr. 6-1034</strong> (Bellinge Fælled, etape 4) for Odense Kommune. <a href="https://odense.viewer.dkplan.niras.dk/plan/24#/lokalplanid/1092" target="_blank" class="text-link">Se digitale kort her</a> eller <a href="https://dokument.plandata.dk/20_9430969_1668166619146.pdf" target="_blank" class="text-link">download den officielle PDF her</a>.</li>
-    <li><strong>Afgrænsning:</strong> Foreningen dækker udelukkende den østlige udstykning øst for Flintagergårdvej (primært vejene Hjortetakken og Trykstokken). Området afgrænses af Assensvej mod syd og Lettebækken mod nord, og er helt adskilt fra den vestlige grundejerforening (etape 1-3).</li>
+    <li><strong>Campingvogne, trailere og påhæng:</strong> Må højest parkeres på vejen i <strong>12 timer</strong>. Det er strengt forbudt at parkere frakoblede campingvogne på afmærkede parkeringspladser.</li>
+    <li><strong>Tunge køretøjer:</strong> Køretøjer med en tilladt totalvægt over <strong>3.500 kg</strong> og trailere over <strong>750 kg</strong> må ikke parkere i området mellem <strong>kl. 19.00 og 07.00</strong>.</li>
+    <li><strong>Erhverv &amp; Overnatning:</strong> Køretøjer indrettet til overnatning eller reklameformål kræver særlig tilladelse fra Odense Kommune.</li>
   </ul>
+
+  <h3>Generelle parkeringsforbud</h3>
+  <p>Det er ulovligt at standse eller parkere:</p>
+  <ul>
+    <li>Helt eller delvist på fortove, cykelstier eller i en skillerabat.</li>
+    <li>Direkte foran ind- og udkørsler.</li>
+    <li>Ved en spærrelinje, hvis der er under <strong>3 meter</strong> mellem bilen og linjen.</li>
+    <li>Mindre end <strong>5 meter før</strong> et fodgængerfelt eller en cykelsti-udkørsel.</li>
+    <li>I et vejkryds og mindre end <strong>10 meter</strong> fra den tværgående kørebanes kant (10 meter-reglen gælder altid).</li>
+  </ul>
+
+  <h3>Retten til offentlig vej</h3>
+  <p>Vejene i byzonen er offentlige færdselsarealer. Det betyder, at parkering er tilladt for alle, og pladserne er ikke forbeholdt områdets beboere. Man har ikke garanti for eller krav på en parkeringsplads direkte foran sit eget hus.</p>
+  <p><a href="https://www.odense.dk/borger/trafik-og-veje/parkering/parkeringsguide" target="_blank" class="text-link">Læs mere om Odense Kommunes regler for parkering her</a></p>
 
   <hr />
 
-  <h2>Drift- og Vedligeholdelsesplan for Fællesarealer</h2>
-  <p>Grundejerforeningen har det overordnede ansvar for vedligeholdelse af udstykningens fælles aktiver og infrastruktur. Dette omfatter:</p>
+  <h2>Andre gode tips til boligen</h2>
   <ul>
-    <li>Naturlegepladser, grønne friarealer og støjvolde mod Assensvej.</li>
-    <li>Tekniske anlæg til Lokal Regnvandshåndtering (LAR) samt de tilhørende søer og lavninger, der ikke hører under de etablerede forsyningsselskaber.</li>
+    <li><strong>Skorstensfejning:</strong> Lovpligtigt syn og rensning skal overholdes, hvis din bolig har skorsten installeret.</li>
+    <li><strong>Skadedyr:</strong> Særligt rotter skal straks anmeldes digitalt via Odense Kommunes selvbetjeningsløsning.</li>
+    <li><strong>Naboskab og Hegnssyn:</strong> Dialog løser de fleste udfordringer med fælles hæk eller træer i skel. Kan der ikke opnås enighed, kan sagen indbringes for det lokale <em>Hegnssyn</em>.</li>
   </ul>
-
-  <h3>Fejlmelding af fællesarealer – "Giv et tip"</h3>
-  <p>Hvis du observerer skader eller mangelfuld vedligeholdelse på foreningens fællesarealer, stier eller veje, skal du benytte Odense Kommunes app eller hjemmeside <strong>"Giv et tip"</strong>. Odense Kommune behandler tippet og retter direkte henvendelse til grundejerforeningens bestyrelse, hvis udbedringen påhviler foreningen.</p>
 </section>
 
 <footer>
