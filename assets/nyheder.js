@@ -10,6 +10,8 @@
 // forsiden) — udelad attributten (eller sæt den til 0) for at vise alle
 // (bruges på arkivsiden). Sæt data-archive-link="/nyheder-arkiv" for at få
 // et "Se alle nyheder"-link nederst, når der er flere nyheder end grænsen.
+// Sæt data-collapse="true" for at vise hvert indlæg som en fold-ud-boks
+// (kun titel + dato synlig, indtil man klikker).
 
 (function () {
   const NEWS_API_URL = 'https://api.github.com/repos/christianthusgaard/bellingefaelledost/contents/nyheder';
@@ -19,6 +21,7 @@
 
   const limit = Number(container.dataset.limit || 0);
   const archiveLink = container.dataset.archiveLink || '';
+  const collapse = container.dataset.collapse === 'true';
 
   function escapeHtml(str) {
     const div = document.createElement('div');
@@ -28,6 +31,14 @@
 
   function formatDate(d) {
     return d.getDate() + '. ' + MAANEDER[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function toExcerpt(bodyHtml, maxLen) {
+    const div = document.createElement('div');
+    div.innerHTML = bodyHtml;
+    const text = (div.textContent || '').replace(/\s+/g, ' ').trim();
+    if (text.length <= maxLen) return text;
+    return text.slice(0, maxLen).replace(/\s+\S*$/, '') + '…';
   }
 
   function toHtml(raw, baseUrl) {
@@ -104,8 +115,19 @@
           .catch(function () { item.bodyHtml = '<p><em>Indholdet kunne ikke indlæses.</em></p>'; return item; });
       })).then(function (items) {
         let html = items.map(function (item) {
+          const dateHtml = '<span class="news-date">' + (item.dato ? formatDate(item.dato) : '') + '</span>';
+
+          if (collapse) {
+            const excerpt = toExcerpt(item.bodyHtml, 140);
+            return '<details class="news-post news-post--collapsible">' +
+              '<summary>' + dateHtml + '<span class="news-title">' + escapeHtml(item.titel) + '</span>' +
+              '<p class="news-excerpt">' + escapeHtml(excerpt) + '</p></summary>' +
+              '<div class="news-body">' + item.bodyHtml + '</div>' +
+            '</details>';
+          }
+
           return '<article class="news-post">' +
-            '<span class="news-date">' + (item.dato ? formatDate(item.dato) : '') + '</span>' +
+            dateHtml +
             '<h3 class="news-title">' + escapeHtml(item.titel) + '</h3>' +
             '<div class="news-body">' + item.bodyHtml + '</div>' +
           '</article>';
