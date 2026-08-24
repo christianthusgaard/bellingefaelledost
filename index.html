@@ -687,7 +687,10 @@
 
     fetch(NEWS_API_URL)
       .then(function (res) {
-        if (!res.ok) throw new Error('Kunne ikke hente nyheder');
+        if (res.status === 403 || res.status === 429) {
+          throw new Error('rate-limit');
+        }
+        if (!res.ok) throw new Error('generic');
         return res.json();
       })
       .then(function (files) {
@@ -712,8 +715,12 @@
           '</a>';
         }).join('');
       })
-      .catch(function () {
-        container.innerHTML = '<p class="news-empty">Nyhederne kunne ikke indlæses lige nu. Prøv at genindlæse siden.</p>';
+      .catch(function (err) {
+        if (err && err.message === 'rate-limit') {
+          container.innerHTML = '<p class="news-empty">Nyhederne kan ikke hentes lige nu, fordi der er kommet for mange forespørgsler på kort tid. Prøv igen om lidt.</p>';
+        } else {
+          container.innerHTML = '<p class="news-empty">Nyhederne kunne ikke indlæses lige nu. Prøv at genindlæse siden.</p>';
+        }
       });
   })();
 </script>
