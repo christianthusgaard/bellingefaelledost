@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bestyrelsens arbejde — Grundejerforeningen Bellinge Fælled Øst</title>
+  <meta name="description" content="Læs om bestyrelsens opgaver og arbejde i Grundejerforeningen Bellinge Fælled Øst i Odense SV — ansvarsområder, aktuelle indsatsområder og hvordan du kommer i kontakt.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #2d4a2d;
+      --green-mid: #4a7c59;
+      --green-light: #7dab8a;
+      --cream: #f5f0e8;
+      --warm-white: #fdfaf5;
+      --text: #1e2e1e;
+      --text-light: #5a6e5a;
+      --gold: #c8a84b;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ── STICKY TOP ELEMENT ── */
+    .top-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(45, 74, 45, 0.15);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      background: var(--green-dark);
+      overflow: hidden;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 24px 50px 24px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      max-width: 700px;
+      animation: fadeDown 0.8s ease both;
+    }
+    .wave { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid #e0dbd0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+
+    /* ── CONTENT SECTIONS ── */
+    section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+    .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--green-dark); margin: 32px 0 16px; line-height: 1.25; }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--green-dark); margin: 24px 0 12px; }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+    p { color: var(--text-light); margin-bottom: 16px; max-width: 720px; }
+    ul { color: var(--text-light); margin-bottom: 24px; padding-left: 20px; max-width: 720px; }
+    li { margin-bottom: 8px; }
+    li strong { color: var(--text); }
+    a.text-link { color: var(--green-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    a.text-link:hover { color: var(--green-dark); text-decoration: underline; }
+    hr { border: 0; height: 1px; background: #e8e2d6; margin: 40px 0; }
+
+    /* ── IMAGES ── */
+    .content-image {
+      max-width: 720px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 24px 0;
+      border: 1px solid #e0dbd0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(45, 74, 45, 0.05);
+    }
+
+    footer { background: #1a2e1a; text-align: center; padding: 24px; font-size: 0.8rem; color: #5a7a5a; margin-top: 60px; }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { nav a { padding: 14px 12px; font-size: 0.78rem; } }
+
+    /* ── GOOGLE MAPS KORT ── */
+.map-wrapper {
+  max-width: 860px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border: 1px solid #e0dbd0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(45, 74, 45, 0.05);
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+  </style>
+</head>
+<body>
+
+<div class="top-container">
+
+  <header>
+    <h1>Grundejerforeningen Bellinge Fælled Øst</h1>
+    <div class="wave">
+      <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
+      </svg>
+    </div>
+  </header>
+
+  <nav>
+    <a href="/">Forside</a>
+    <a href="/foreningen">Foreningen</a>
+    <a href="/grundejer">Grundejers Forpligtelser</a>
+    <a href="/bellinge">Området</a>
+    <a href="/bestyrelsen" class="active">Bestyrelsens arbejde</a>
+    <a href="/#kontakt">Kontakt</a>
+  </nav>
+
+</div>
+
+<section>
+  <p class="section-label">Bestyrelsen</p>
+  <h2>Bestyrelsens arbejde</h2>
+  <div class="divider"></div>
+
+  <p>
+    Bestyrelsen vælges på den ordinære generalforsamling og varetager foreningens daglige drift på medlemmernes vegne. Arbejdet er ulønnet og udføres af beboere i lokalområdet, der stiller op for at sikre en velfungerende og velholdt udstykning for alle grundejere i Bellinge Fælled Øst.
+  </p>
+
+  <h3>Bestyrelsens ansvarsområder</h3>
+  <ul>
+    <li><strong>Økonomi:</strong> Budget, kontingentopkrævning og regnskab, som fremlægges til godkendelse på generalforsamlingen.</li>
+    <li><strong>Fællesarealer:</strong> Vedligeholdelse af kørebaner, grønne friarealer, naturlegepladser og de tekniske LAR-anlæg (Lokal Regnvandshåndtering) med tilhørende søer og lavninger.</li>
+    <li><strong>Myndighedskontakt:</strong> Løbende dialog med Odense Kommune om blandt andet lokalplanens rammer, vejforhold og drift af fællesarealer.</li>
+    <li><strong>Medlemshenvendelser:</strong> Behandling af spørgsmål og henvendelser fra grundejere om alt fra kontingent til fortolkning af vedtægterne.</li>
+    <li><strong>Overholdelse af vedtægter:</strong> Sikre at foreningens vedtægter efterleves, og at eventuelle uoverensstemmelser håndteres ensartet og gennemsigtigt.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Aktuelle indsatsområder</h2>
+  <p>
+    Ud over den løbende drift arbejder bestyrelsen for tiden særligt med:
+  </p>
+  <ul>
+    <li><strong>Vejforhold:</strong> Vedligeholdelse og ensartet regulering af kørebanerne, herunder eventuelle ændringer af belægning og adgangsforhold, så det sker inden for rammerne af vedtægterne og til gavn for hele fællesskabet.</li>
+    <li><strong>Fællesarealernes tilstand:</strong> Tilsyn med grønne områder og regnvandsanlæg med henblik på langsigtet vedligeholdelse.</li>
+    <li><strong>Digital tilstedeværelse:</strong> Denne hjemmeside, så dokumenter, referater og kontaktinformation er let tilgængelige for alle medlemmer.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Bestyrelsesmøder &amp; referater</h2>
+  <p>
+    Bestyrelsen holder møde løbende hen over året efter behov, og beslutninger af større betydning forelægges medlemmerne på den ordinære generalforsamling i april. Referater fra generalforsamlingen findes under dokumenter på forsiden.
+  </p>
+  <ul>
+    <li><a href="/#dokumenter" class="text-link">Se foreningens dokumenter &amp; referater</a></li>
+  </ul>
+
+  <hr />
+
+  <h2>Kom i kontakt med bestyrelsen</h2>
+  <p>
+    Har du input, forslag eller spørgsmål til bestyrelsens arbejde, er du altid velkommen til at række ud. Henvendelser besvares typisk af det bestyrelsesmedlem, hvis ansvarsområde sagen hører under.
+  </p>
+  <ul>
+    <li><a href="mailto:bestyrelsen5250@outlook.dk" class="text-link">bestyrelsen5250@outlook.dk</a></li>
+    <li><a href="/#bestyrelse" class="text-link">Se de enkelte bestyrelsesmedlemmer og deres roller</a></li>
+  </ul>
+</section>
+
+<!-- GOOGLE MAPS KORT -->
+<div class="map-wrapper">
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3815.9722561601075!2d10.3036405367941!3d55.34070924734532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464cdedefbd0cdcb%3A0x4493212a29848b2c!2sHjortetakken%2047%2C%205250%20Odense!5e0!3m2!1sda!2sdk!4v1781126047288!5m2!1sda!2sdk"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Grundejerforeningen Bellinge Fælled Øst &mdash; Alle rettigheder forbeholdes.
+</footer>
+
+</body>
+</html>
