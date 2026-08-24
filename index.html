@@ -170,15 +170,16 @@
     #intro {
       max-width: 860px;
       margin: 0 auto;
-      padding: 32px 24px 0;
+      padding: 28px 24px 4px;
     }
-    #intro p { color: var(--text-light); max-width: 640px; }
+    #intro .section-label { margin-bottom: 6px; }
+    #intro p:not(.section-label) { color: var(--text-light); max-width: 640px; margin-bottom: 0; }
     a.text-link { color: var(--green-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     a.text-link:hover { color: var(--green-dark); text-decoration: underline; }
 
     /* ── NYHEDER ── */
     #nyheder { border-bottom: 1px solid #e8e2d6; max-width: 100%; }
-    #nyheder > .inner { max-width: 860px; margin: 0 auto; padding: 72px 24px; }
+    #nyheder > .inner { max-width: 860px; margin: 0 auto; padding: 32px 24px 64px; }
 
     .news-feed {
       margin-top: 32px;
@@ -558,6 +559,7 @@
 <!-- INTRO -->
 <section id="intro">
   <div class="fade-in">
+    <p class="section-label">Om foreningen</p>
     <p>
       Grundejerforeningen Bellinge Fælled Øst varetager fælles interesser for beboerne på Hjortetakken og Trykstokken i Bellinge, Odense SV.
       <a href="/foreningen" class="text-link">Læs mere om foreningen &rarr;</a>
