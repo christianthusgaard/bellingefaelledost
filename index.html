@@ -212,62 +212,34 @@
     .news-body a:hover { color: var(--green-dark); text-decoration: underline; }
     .news-body strong { color: var(--text); }
 
+    .news-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid #e0dbd0;
+      box-shadow: 0 4px 12px rgba(45, 74, 45, 0.05);
+    }
+
     .news-status, .news-empty {
       color: var(--text-light);
       font-style: italic;
       padding: 18px 4px;
     }
 
-    /* ── DOCUMENTS ── */
-    #dokumenter { background: var(--cream); max-width: 100%; }
-    #dokumenter > .inner { max-width: 860px; margin: 0 auto; padding: 72px 24px; }
-
-    .doc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 32px;
-    }
-
-    .doc-card {
-      background: var(--warm-white);
-      border: 1px solid #ddd8cc;
-      border-radius: 10px;
-      padding: 24px 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
+    .news-archive-link {
+      display: block;
+      margin-top: 24px;
+      padding: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--green-mid);
       text-decoration: none;
-      transition: box-shadow 0.2s, transform 0.2s;
     }
 
-    .doc-card:hover {
-      box-shadow: 0 6px 20px rgba(45,74,45,0.1);
-      transform: translateY(-2px);
-    }
-
-    .doc-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--green-dark);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .doc-icon svg { width: 20px; height: 20px; fill: var(--cream); }
-
-    .doc-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--green-dark);
-      margin-bottom: 4px;
-    }
-
-    .doc-card p { font-size: 0.82rem; color: var(--text-light); margin: 0; }
+    .news-archive-link:hover { color: var(--green-dark); text-decoration: underline; }
 
     /* ── BESTYRELSE ── */
     .board-grid {
@@ -488,52 +460,8 @@
       <div class="divider"></div>
       <p>Her finder du de seneste nyheder, meddelelser og dokumenter fra bestyrelsen — nyeste øverst.</p>
 
-      <div class="news-feed" id="nyheder-liste">
+      <div class="news-feed" id="nyheder-liste" data-limit="5" data-archive-link="/nyheder-arkiv">
         <p class="news-status">Henter nyheder&hellip;</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- DOKUMENTER -->
-<div id="dokumenter">
-  <div class="inner">
-    <div class="fade-in">
-      <p class="section-label">Downloads</p>
-      <h2>Dokumenter &amp; vedtægter</h2>
-      <div class="divider"></div>
-      <p>Her finder du foreningens vigtigste dokumenter. Klik på et dokument for at åbne eller downloade det.</p>
-
-      <div class="doc-grid">
-        <a href="https://1drv.ms/f/c/e377349d40baa6d4/IgBOawtRm9IYTqSrSb5JKkZlAT0uJPKxWjdwz5Q3ISyacyg?e=TWkYVj" target="_blank" class="doc-card">
-          <div class="doc-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
-          </div>
-          <div>
-            <h3>Vedtægter</h3>
-            <p>Foreningens gældende vedtægter</p>
-          </div>
-        </a>
-
-       <a href="https://1drv.ms/f/c/e377349d40baa6d4/IgAaAy_DJVVlTKwep4au6evcAYuZ6kjd8VKRwUHE9Kutiuw?e=ZCSnjc" target="_blank" class="doc-card">
-          <div class="doc-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
-          </div>
-          <div>
-            <h3>Referater</h3>
-            <p>Referater fra generalforsamlinger</p>
-          </div>
-        </a>
-
-        <a href="https://1drv.ms/f/c/e377349d40baa6d4/IgCt3DU3f1GqTq8kRjaIHkzvAQFK18-UoQh562QD0UFUFqk?e=QUg4z8" target="_blank" class="doc-card">
-          <div class="doc-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/></svg>
-          </div>
-          <div>
-            <h3>Budget &amp; regnskab</h3>
-            <p>Seneste godkendte regnskab</p>
-          </div>
-        </a>
       </div>
     </div>
   </div>
@@ -646,101 +574,8 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
-<script>
-  // Nyheder-feed: henter tekstfiler (.md/.txt) fra /nyheder-mappen i repoet
-  // via GitHub's API og viser dem som rigtige indlæg direkte på siden.
-  // Ny nyhed = ny tekstfil i mappen, intet andet skal opdateres.
-  (function () {
-    const NEWS_API_URL = 'https://api.github.com/repos/christianthusgaard/bellingefaelledost/contents/nyheder';
-    const MAANEDER = ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'];
-    const container = document.getElementById('nyheder-liste');
-    if (!container) return;
-
-    function escapeHtml(str) {
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-
-    function formatDate(d) {
-      return d.getDate() + '. ' + MAANEDER[d.getMonth()] + ' ' + d.getFullYear();
-    }
-
-    function toHtml(raw) {
-      if (window.marked && typeof window.marked.parse === 'function') return window.marked.parse(raw);
-      if (window.marked) return window.marked(raw);
-      return raw.split(/\n{2,}/).map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
-    }
-
-    function parseMeta(file) {
-      if (file.type !== 'file') return null;
-      if (/^readme\.md$/i.test(file.name)) return null;
-      if (!/\.(md|txt)$/i.test(file.name)) return null;
-
-      const withoutExt = file.name.replace(/\.[^./]+$/, '');
-      const match = withoutExt.match(/^(\d{4})-(\d{2})-(\d{2})[\s_-]+(.+)$/);
-
-      let dato = null;
-      let titel = withoutExt;
-
-      if (match) {
-        const [, aar, mnd, dag, rest] = match;
-        dato = new Date(Number(aar), Number(mnd) - 1, Number(dag));
-        titel = rest;
-      }
-
-      titel = titel.replace(/[_-]+/g, ' ').trim();
-
-      return { titel: titel, dato: dato, url: file.download_url };
-    }
-
-    fetch(NEWS_API_URL)
-      .then(function (res) {
-        if (res.status === 403 || res.status === 429) {
-          throw new Error('rate-limit');
-        }
-        if (!res.ok) throw new Error('generic');
-        return res.json();
-      })
-      .then(function (files) {
-        const metas = files.map(parseMeta).filter(Boolean);
-
-        metas.sort(function (a, b) {
-          if (a.dato && b.dato) return b.dato - a.dato;
-          if (a.dato) return -1;
-          if (b.dato) return 1;
-          return a.titel.localeCompare(b.titel, 'da');
-        });
-
-        if (metas.length === 0) {
-          container.innerHTML = '<p class="news-empty">Der er endnu ikke lagt nyheder op.</p>';
-          return;
-        }
-
-        return Promise.all(metas.map(function (item) {
-          return fetch(item.url)
-            .then(function (res) { return res.text(); })
-            .then(function (raw) { item.bodyHtml = toHtml(raw); return item; })
-            .catch(function () { item.bodyHtml = '<p><em>Indholdet kunne ikke indlæses.</em></p>'; return item; });
-        })).then(function (items) {
-          container.innerHTML = items.map(function (item) {
-            return '<article class="news-post">' +
-              '<span class="news-date">' + (item.dato ? formatDate(item.dato) : '') + '</span>' +
-              '<h3 class="news-title">' + escapeHtml(item.titel) + '</h3>' +
-              '<div class="news-body">' + item.bodyHtml + '</div>' +
-            '</article>';
-          }).join('');
-        });
-      })
-      .catch(function (err) {
-        if (err && err.message === 'rate-limit') {
-          container.innerHTML = '<p class="news-empty">Nyhederne kan ikke hentes lige nu, fordi der er kommet for mange forespørgsler på kort tid. Prøv igen om lidt.</p>';
-        } else {
-          container.innerHTML = '<p class="news-empty">Nyhederne kunne ikke indlæses lige nu. Prøv at genindlæse siden.</p>';
-        }
-      });
-  })();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/assets/nyheder.js"></script>
 
 </body>
 </html>
