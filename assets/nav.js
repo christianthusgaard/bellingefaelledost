@@ -12,9 +12,9 @@
   var LINKS = [
     { path: '/', label: 'Forside' },
     { path: '/foreningen', label: 'Foreningen' },
+    { path: '/bestyrelsen', label: 'Bestyrelsens arbejde' },
     { path: '/grundejer', label: 'Grundejers Forpligtelser' },
     { path: '/bellinge', label: 'Området' },
-    { path: '/bestyrelsen', label: 'Bestyrelsens arbejde' },
     { path: '/#kontakt', label: 'Kontakt' }
   ];
 
