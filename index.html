@@ -166,8 +166,56 @@
 
     p { color: var(--text-light); max-width: 640px; }
 
-    /* ── WELCOME ── */
-    #velkommen { border-bottom: 1px solid #e8e2d6; }
+    /* ── NYHEDER ── */
+    #nyheder { border-bottom: 1px solid #e8e2d6; max-width: 100%; }
+    #nyheder > .inner { max-width: 860px; margin: 0 auto; padding: 72px 24px; }
+
+    .news-feed {
+      margin-top: 32px;
+      border-top: 1px solid #e0dbd0;
+    }
+
+    .news-item {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      padding: 18px 4px;
+      border-bottom: 1px solid #e0dbd0;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .news-item:hover { background: rgba(74,124,89,0.05); }
+
+    .news-date {
+      flex-shrink: 0;
+      width: 130px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .news-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.02rem;
+      color: var(--green-dark);
+      line-height: 1.4;
+    }
+
+    .news-item:hover .news-title { text-decoration: underline; }
+
+    .news-status, .news-empty {
+      color: var(--text-light);
+      font-style: italic;
+      padding: 18px 4px;
+    }
+
+    @media (max-width: 600px) {
+      .news-item { flex-direction: column; gap: 4px; }
+      .news-date { width: auto; }
+    }
 
     /* ── DOCUMENTS ── */
     #dokumenter { background: var(--cream); max-width: 100%; }
@@ -426,32 +474,24 @@
 </header>
 
 <!-- NAV -->
-<nav>
-  <a href="/">Forside</a>
-  <a href="/foreningen">Foreningen</a>
-  <a href="/grundejer">Grundejers Forpligtelser</a>
-  <a href="/bellinge">Området</a>
-  <a href="/bestyrelsen">Bestyrelsens arbejde</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
+<nav data-site-nav></nav>
+<script src="/assets/nav.js"></script>
 
-<!-- VELKOMMEN -->
-<section id="velkommen">
-  <div class="fade-in">
-    <p class="section-label">Om foreningen</p>
-    <h2>Velkommen til vores grundejerforening</h2>
-    <div class="divider"></div>
-    <p>
-      Velkommen til Grundejerforeningen Bellinge Fælled Øst i Odense SV. Foreningen varetager de fælles interesser for beboerne på primært Hjortetakken og Trykstokken, samt få omkringliggende veje i vores naturskønne, bæredygtige boligområde i Bellinge.
-    </p>
-    <p style="margin-top: 16px;">
-      Vores rammer er defineret af Odense Kommunes Lokalplan nr. 6-1034 og 6-813. Her på siden finder du foreningens gældende vedtægter, referater fra generalforsamlingen samt vigtig information om grundejernes forpligtelser vedrørende renholdelse af private fællesveje og snerydning i Odense.
-    </p>
-    <p style="margin-top: 16px;">
-      Hvis du bor i området Bellinge Fælled Øst og ikke er med i vores fælles Facebook-gruppe, vil vi opfordre dig til at søge om medlemsskab. Find gruppen <a href="https://www.facebook.com/groups/668847473577382" target=_blank">her</a>.
-    </p>
+<!-- NYHEDER -->
+<div id="nyheder">
+  <div class="inner">
+    <div class="fade-in">
+      <p class="section-label">Aktuelt</p>
+      <h2>Nyheder</h2>
+      <div class="divider"></div>
+      <p>Her finder du de seneste nyheder, meddelelser og dokumenter fra bestyrelsen — nyeste øverst.</p>
+
+      <div class="news-feed" id="nyheder-liste">
+        <p class="news-status">Henter nyheder&hellip;</p>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- DOKUMENTER -->
 <div id="dokumenter">
@@ -602,6 +642,80 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+<script>
+  // Nyheder-feed: henter filer fra /nyheder-mappen i repoet via GitHub's API
+  // og bygger en dato-sorteret liste. Ny nyhed = ny fil i mappen, intet andet skal opdateres.
+  (function () {
+    const NEWS_API_URL = 'https://api.github.com/repos/christianthusgaard/bellingefaelledost/contents/nyheder';
+    const MAANEDER = ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'];
+    const container = document.getElementById('nyheder-liste');
+    if (!container) return;
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function formatDate(d) {
+      return d.getDate() + '. ' + MAANEDER[d.getMonth()] + ' ' + d.getFullYear();
+    }
+
+    function parseEntry(file) {
+      if (file.type !== 'file') return null;
+      if (/^readme\.md$/i.test(file.name)) return null;
+      if (/^\./.test(file.name)) return null;
+
+      const withoutExt = file.name.replace(/\.[^./]+$/, '');
+      const match = withoutExt.match(/^(\d{4})-(\d{2})-(\d{2})[\s_-]+(.+)$/);
+
+      let dato = null;
+      let titel = withoutExt;
+
+      if (match) {
+        const [, aar, mnd, dag, rest] = match;
+        dato = new Date(Number(aar), Number(mnd) - 1, Number(dag));
+        titel = rest;
+      }
+
+      titel = titel.replace(/[_-]+/g, ' ').trim();
+
+      return { titel: titel, dato: dato, url: file.download_url };
+    }
+
+    fetch(NEWS_API_URL)
+      .then(function (res) {
+        if (!res.ok) throw new Error('Kunne ikke hente nyheder');
+        return res.json();
+      })
+      .then(function (files) {
+        const items = files.map(parseEntry).filter(Boolean);
+
+        items.sort(function (a, b) {
+          if (a.dato && b.dato) return b.dato - a.dato;
+          if (a.dato) return -1;
+          if (b.dato) return 1;
+          return a.titel.localeCompare(b.titel, 'da');
+        });
+
+        if (items.length === 0) {
+          container.innerHTML = '<p class="news-empty">Der er endnu ikke lagt nyheder op.</p>';
+          return;
+        }
+
+        container.innerHTML = items.map(function (item) {
+          return '<a class="news-item" href="' + item.url + '" target="_blank" rel="noopener">' +
+            '<span class="news-date">' + (item.dato ? formatDate(item.dato) : '') + '</span>' +
+            '<span class="news-title">' + escapeHtml(item.titel) + '</span>' +
+          '</a>';
+        }).join('');
+      })
+      .catch(function () {
+        container.innerHTML = '<p class="news-empty">Nyhederne kunne ikke indlæses lige nu. Prøv at genindlæse siden.</p>';
+      });
+  })();
 </script>
 
 </body>
