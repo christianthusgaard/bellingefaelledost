@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alle nyheder — Grundejerforeningen Bellinge Fælled Øst</title>
+  <meta name="description" content="Alle nyheder og meddelelser fra bestyrelsen i Grundejerforeningen Bellinge Fælled Øst i Odense SV.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green-dark: #2d4a2d;
+      --green-mid: #4a7c59;
+      --green-light: #7dab8a;
+      --cream: #f5f0e8;
+      --warm-white: #fdfaf5;
+      --text: #1e2e1e;
+      --text-light: #5a6e5a;
+      --gold: #c8a84b;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ── STICKY TOP ELEMENT ── */
+    .top-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(45, 74, 45, 0.15);
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      background: var(--green-dark);
+      overflow: hidden;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 24px 50px 24px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      max-width: 700px;
+      animation: fadeDown 0.8s ease both;
+    }
+    .wave { position: absolute; bottom: -1px; left: 0; width: 100%; line-height: 0; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--warm-white);
+      border-bottom: 1px solid #e0dbd0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--green-dark); border-bottom-color: var(--gold); }
+
+    /* ── CONTENT SECTIONS ── */
+    section { max-width: 860px; margin: 0 auto; padding: 60px 24px; }
+    .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--green-dark); margin: 32px 0 16px; line-height: 1.25; }
+    h2:first-of-type { margin-top: 0; }
+    .divider { width: 48px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+    p { color: var(--text-light); margin-bottom: 16px; max-width: 720px; }
+
+    footer { background: #1a2e1a; text-align: center; padding: 24px; font-size: 0.8rem; color: #5a7a5a; margin-top: 60px; }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { nav a { padding: 14px 12px; font-size: 0.78rem; } }
+
+    /* ── NYHEDER-FEED ── */
+    .news-feed { margin-top: 32px; border-top: 1px solid #e0dbd0; }
+
+    .news-post {
+      display: block;
+      padding: 28px 4px;
+      border-bottom: 1px solid #e0dbd0;
+    }
+
+    .news-date {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .news-post .news-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--green-dark);
+      line-height: 1.4;
+      margin: 0 0 12px;
+    }
+
+    .news-body {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .news-body p { margin-bottom: 12px; }
+    .news-body p:last-child { margin-bottom: 0; }
+    .news-body ul, .news-body ol { margin: 0 0 12px 20px; }
+    .news-body a { color: var(--green-mid); text-decoration: none; font-weight: 500; }
+    .news-body a:hover { color: var(--green-dark); text-decoration: underline; }
+    .news-body strong { color: var(--text); }
+
+    .news-body img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid #e0dbd0;
+      box-shadow: 0 4px 12px rgba(45, 74, 45, 0.05);
+    }
+
+    .news-status, .news-empty {
+      color: var(--text-light);
+      font-style: italic;
+      padding: 18px 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-container">
+
+  <header>
+    <h1>Grundejerforeningen Bellinge Fælled Øst</h1>
+    <div class="wave">
+      <svg viewBox="0 0 1440 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,48 C360,0 1080,48 1440,10 L1440,48 Z" fill="#fdfaf5"/>
+      </svg>
+    </div>
+  </header>
+
+  <nav data-site-nav></nav>
+  <script src="/assets/nav.js"></script>
+
+</div>
+
+<section>
+  <p class="section-label">Aktuelt</p>
+  <h2>Alle nyheder</h2>
+  <div class="divider"></div>
+  <p>Alle nyheder og meddelelser fra bestyrelsen, nyeste øverst.</p>
+
+  <div class="news-feed" id="nyheder-liste">
+    <p class="news-status">Henter nyheder&hellip;</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Grundejerforeningen Bellinge Fælled Øst &mdash; Alle rettigheder forbeholdes.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="/assets/nyheder.js"></script>
+
+</body>
+</html>
