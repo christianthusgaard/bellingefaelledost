@@ -192,6 +192,7 @@
     }
 
     .news-post .news-title {
+      display: block;
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
       color: var(--green-dark);
@@ -220,6 +221,48 @@
       border-radius: 8px;
       border: 1px solid #e0dbd0;
       box-shadow: 0 4px 12px rgba(45, 74, 45, 0.05);
+    }
+
+    /* ── FOLD-UD (details/summary) ── */
+    .news-post--collapsible summary {
+      list-style: none;
+      cursor: pointer;
+      position: relative;
+      padding-right: 32px;
+    }
+
+    .news-post--collapsible summary::-webkit-details-marker { display: none; }
+
+    .news-post--collapsible summary::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      transition: transform 0.2s;
+    }
+
+    .news-post--collapsible[open] summary::after { transform: rotate(-135deg); }
+
+    .news-post--collapsible summary:hover .news-title { text-decoration: underline; }
+
+    .news-excerpt {
+      color: var(--text-light);
+      font-size: 0.88rem;
+      margin: 4px 0 0;
+      max-width: 640px;
+    }
+
+    .news-post--collapsible[open] .news-excerpt { display: none; }
+
+    .news-post--collapsible .news-body {
+      margin-top: 12px;
+      padding-top: 16px;
+      border-top: 1px solid #e8e2d6;
     }
 
     .news-status, .news-empty {
@@ -460,7 +503,7 @@
       <div class="divider"></div>
       <p>Her finder du de seneste nyheder, meddelelser og dokumenter fra bestyrelsen — nyeste øverst.</p>
 
-      <div class="news-feed" id="nyheder-liste" data-limit="5" data-archive-link="/nyheder-arkiv">
+      <div class="news-feed" id="nyheder-liste" data-limit="5" data-archive-link="/nyheder-arkiv" data-collapse="true">
         <p class="news-status">Henter nyheder&hellip;</p>
       </div>
     </div>
