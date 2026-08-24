@@ -11,7 +11,6 @@
 (function () {
   var LINKS = [
     { path: '/', label: 'Forside' },
-    { path: '/#nyheder', label: 'Nyheder' },
     { path: '/foreningen', label: 'Foreningen' },
     { path: '/grundejer', label: 'Grundejers Forpligtelser' },
     { path: '/bellinge', label: 'Området' },
