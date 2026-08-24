@@ -175,46 +175,47 @@
       border-top: 1px solid #e0dbd0;
     }
 
-    .news-item {
-      display: flex;
-      align-items: baseline;
-      gap: 24px;
-      padding: 18px 4px;
+    .news-post {
+      display: block;
+      padding: 28px 4px;
       border-bottom: 1px solid #e0dbd0;
-      text-decoration: none;
-      transition: background 0.2s;
     }
 
-    .news-item:hover { background: rgba(74,124,89,0.05); }
-
     .news-date {
-      flex-shrink: 0;
-      width: 130px;
+      display: block;
       font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--gold);
+      margin-bottom: 6px;
     }
 
-    .news-title {
+    .news-post .news-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.02rem;
+      font-size: 1.15rem;
       color: var(--green-dark);
       line-height: 1.4;
+      margin: 0 0 12px;
     }
 
-    .news-item:hover .news-title { text-decoration: underline; }
+    .news-body {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .news-body p { margin-bottom: 12px; }
+    .news-body p:last-child { margin-bottom: 0; }
+    .news-body ul, .news-body ol { margin: 0 0 12px 20px; }
+    .news-body a { color: var(--green-mid); text-decoration: none; font-weight: 500; }
+    .news-body a:hover { color: var(--green-dark); text-decoration: underline; }
+    .news-body strong { color: var(--text); }
 
     .news-status, .news-empty {
       color: var(--text-light);
       font-style: italic;
       padding: 18px 4px;
-    }
-
-    @media (max-width: 600px) {
-      .news-item { flex-direction: column; gap: 4px; }
-      .news-date { width: auto; }
     }
 
     /* ── DOCUMENTS ── */
@@ -454,6 +455,7 @@
   }
 }
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -645,8 +647,9 @@
 </script>
 
 <script>
-  // Nyheder-feed: henter filer fra /nyheder-mappen i repoet via GitHub's API
-  // og bygger en dato-sorteret liste. Ny nyhed = ny fil i mappen, intet andet skal opdateres.
+  // Nyheder-feed: henter tekstfiler (.md/.txt) fra /nyheder-mappen i repoet
+  // via GitHub's API og viser dem som rigtige indlæg direkte på siden.
+  // Ny nyhed = ny tekstfil i mappen, intet andet skal opdateres.
   (function () {
     const NEWS_API_URL = 'https://api.github.com/repos/christianthusgaard/bellingefaelledost/contents/nyheder';
     const MAANEDER = ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'];
@@ -663,10 +666,16 @@
       return d.getDate() + '. ' + MAANEDER[d.getMonth()] + ' ' + d.getFullYear();
     }
 
-    function parseEntry(file) {
+    function toHtml(raw) {
+      if (window.marked && typeof window.marked.parse === 'function') return window.marked.parse(raw);
+      if (window.marked) return window.marked(raw);
+      return raw.split(/\n{2,}/).map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
+    }
+
+    function parseMeta(file) {
       if (file.type !== 'file') return null;
       if (/^readme\.md$/i.test(file.name)) return null;
-      if (/^\./.test(file.name)) return null;
+      if (!/\.(md|txt)$/i.test(file.name)) return null;
 
       const withoutExt = file.name.replace(/\.[^./]+$/, '');
       const match = withoutExt.match(/^(\d{4})-(\d{2})-(\d{2})[\s_-]+(.+)$/);
@@ -694,26 +703,34 @@
         return res.json();
       })
       .then(function (files) {
-        const items = files.map(parseEntry).filter(Boolean);
+        const metas = files.map(parseMeta).filter(Boolean);
 
-        items.sort(function (a, b) {
+        metas.sort(function (a, b) {
           if (a.dato && b.dato) return b.dato - a.dato;
           if (a.dato) return -1;
           if (b.dato) return 1;
           return a.titel.localeCompare(b.titel, 'da');
         });
 
-        if (items.length === 0) {
+        if (metas.length === 0) {
           container.innerHTML = '<p class="news-empty">Der er endnu ikke lagt nyheder op.</p>';
           return;
         }
 
-        container.innerHTML = items.map(function (item) {
-          return '<a class="news-item" href="' + item.url + '" target="_blank" rel="noopener">' +
-            '<span class="news-date">' + (item.dato ? formatDate(item.dato) : '') + '</span>' +
-            '<span class="news-title">' + escapeHtml(item.titel) + '</span>' +
-          '</a>';
-        }).join('');
+        return Promise.all(metas.map(function (item) {
+          return fetch(item.url)
+            .then(function (res) { return res.text(); })
+            .then(function (raw) { item.bodyHtml = toHtml(raw); return item; })
+            .catch(function () { item.bodyHtml = '<p><em>Indholdet kunne ikke indlæses.</em></p>'; return item; });
+        })).then(function (items) {
+          container.innerHTML = items.map(function (item) {
+            return '<article class="news-post">' +
+              '<span class="news-date">' + (item.dato ? formatDate(item.dato) : '') + '</span>' +
+              '<h3 class="news-title">' + escapeHtml(item.titel) + '</h3>' +
+              '<div class="news-body">' + item.bodyHtml + '</div>' +
+            '</article>';
+          }).join('');
+        });
       })
       .catch(function (err) {
         if (err && err.message === 'rate-limit') {
