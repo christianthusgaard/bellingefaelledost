@@ -15,6 +15,7 @@ Flere grundejere langs alléen, som går ned gennem Trykstokken, har ytret utilf
 ### Årshjul
 
 Der er også udarbejdet et årshjul over Sparvaths drift, således at alle grundejere kan se direkte på vores hjemmeside, hvornår på året de forskellige opgaver udføres, så alle har en chance for at holde sig orienteret om driften i vores område. Årshjulet kan ses [her](/foreningen/Årshjul%20sparvath.png).
+Det kan også findes under siden "Foreningen".
 
 På vegne af bestyrelsen i Grundejerforeningen Bellinge Fælled Øst,
 
